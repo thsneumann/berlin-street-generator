@@ -13,16 +13,44 @@
         display: none;
       }
 
+      #app {
+        height: 100%;
+        overflow: auto;
+      }
+
+      body {
+        height: 100vh;
+        background-image: url("bg_01.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
       h1 {
         margin-bottom: 2rem;
+        color: #fff;
+        line-height: 1;
+      }
+
+      @media screen and (max-width: 767px) {
+        h1 {
+          font-size: 3rem;
+        }
       }
 
       a {
         background-image: none;
       }
 
-      .alert p {
+      p {
         font-size: 1.125rem;
+      }
+
+      select {
+        background-color: #fff;
+      }
+
+      .card {
+        background-color: #fff;
       }
 
       .emoji {
@@ -46,7 +74,7 @@
         </div>
 
         <div class="row">
-          <div class="md-6 col">
+          <div class="sm-12 lg-6 col">
             <button
               class="btn-large margin-top margin-bottom"
               @click="selectRandomStreet"
@@ -62,13 +90,19 @@
               </select>
             </div>
           </div>
-          <div class="md-6 col" v-if="selectedStreet">
-            <p>Wie wäre es hiermit?</p>
-            <h2 class="margin-top margin-bottom">{{ selectedStreet.name }}</h2>
-            <p>in {{ selectedStreet.districts.join() }}</p>
-            <a :href="selectedStreet.google_maps_link" target="_blank">
-              <span class="emoji">&#127939;</span>Bring mich hin!</a
-            >
+          <div class="sm-12 lg-6 col">
+            <div class="card" v-if="selectedStreet">
+              <div class="card-body">
+                <p>Wie wäre es hiermit?</p>
+                <h2 class="margin-top margin-bottom">
+                  {{ selectedStreet.name }}
+                </h2>
+                <p>in {{ selectedStreet.districts.join(', ') }}</p>
+                <a :href="selectedStreet.google_maps_link" target="_blank">
+                  <span class="emoji">&#127939;</span>Bring mich hin!</a
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
