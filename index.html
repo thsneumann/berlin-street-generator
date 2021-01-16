@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Der Spaziergang-Finder für Berlin</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css"
+    />
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+
+      h1 {
+        margin-bottom: 2rem;
+      }
+
+      a {
+        background-image: none;
+      }
+
+      .alert p {
+        font-size: 1.125rem;
+      }
+
+      .emoji {
+        display: inline-block;
+        vertical-align: sub;
+        margin: 0 0.25rem;
+        font-size: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" v-cloak>
+      <div class="container">
+        <h1>Schon wieder spazieren gehen?</h1>
+        <div class="alert alert-secondary">
+          <p>
+            <span class="emoji">&#129393;</span>Immer das Gleiche!
+            <span class="emoji">&#127774;</span>Ich will Neues entdecken.
+            <span class="emoji">&#129300;</span>Nur wohin?
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="md-6 col">
+            <button
+              class="btn-large margin-top margin-bottom"
+              @click="selectRandomStreet"
+            >
+              <span class="emoji">&#128073;</span> Klick mich!
+            </button>
+            <div>
+              <select id="district" name="district" v-model="selectedDistrict">
+                <option value="all">-- Alle Stadtteile --</option>
+                <option :value="district" v-for="district in districts">
+                  {{ district }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="md-6 col" v-if="selectedStreet">
+            <p>Wie wäre es hiermit?</p>
+            <h2 class="margin-top margin-bottom">{{ selectedStreet.name }}</h2>
+            <p>in {{ selectedStreet.districts.join() }}</p>
+            <a :href="selectedStreet.google_maps_link" target="_blank">
+              <span class="emoji">&#127939;</span>Bring mich hin!</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="streets.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
