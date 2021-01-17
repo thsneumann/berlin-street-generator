@@ -34,6 +34,9 @@ const App = new Vue({
         );
         this.selectedStreet = this.streets[streetIndex];
       }
+      Vue.nextTick(() =>
+        this.$refs.card.scrollIntoView({ behavior: "smooth" })
+      );
     },
   },
 });
