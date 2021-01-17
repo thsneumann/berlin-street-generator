@@ -31,12 +31,6 @@
         line-height: 1;
       }
 
-      @media screen and (max-width: 767px) {
-        h1 {
-          font-size: 3rem;
-        }
-      }
-
       a {
         background-image: none;
       }
@@ -59,6 +53,31 @@
         margin: 0 0.25rem;
         font-size: 1.5em;
       }
+
+      @media screen and (max-width: 767px) {
+        button.btn-large {
+          font-size: 1.75rem;
+        }
+
+        h1 {
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+          font-size: 2.75rem;
+        }
+
+        h2 {
+          font-size: 2.25rem;
+        }
+
+        .alert p {
+          margin: 0;
+          font-size: 1rem;
+        }
+
+        .row .col:first-child {
+          padding-top: 0;
+        }
+      }
     </style>
   </head>
   <body>
@@ -74,7 +93,7 @@
         </div>
 
         <div class="row">
-          <div class="sm-12 lg-6 col">
+          <div class="sm-12 lg-5 col">
             <button
               class="btn-large margin-top margin-bottom"
               @click="selectRandomStreet"
@@ -90,8 +109,8 @@
               </select>
             </div>
           </div>
-          <div class="sm-12 lg-6 col">
-            <div class="card" v-if="selectedStreet">
+          <div class="sm-12 lg-7 col">
+            <div class="card" ref="card" v-if="selectedStreet">
               <div class="card-body">
                 <p>Wie wäre es hiermit?</p>
                 <h2 class="margin-top margin-bottom">
