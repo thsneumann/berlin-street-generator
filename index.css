@@ -1,0 +1,65 @@
+#app {
+  height: 100%;
+  overflow: auto;
+}
+
+body {
+  height: 100vh;
+  background-image: url("bg_01.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: #fff;
+  line-height: 1;
+}
+
+a {
+  background-image: none;
+}
+
+p {
+  font-size: 1.125rem;
+}
+
+select {
+  background-color: #fff;
+}
+
+.card {
+  background-color: #fff;
+}
+
+.emoji {
+  display: inline-block;
+  vertical-align: sub;
+  margin: 0 0.25rem;
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 767px) {
+  button.btn-large {
+    font-size: 1.75rem;
+  }
+
+  h1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 2.75rem;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+  }
+
+  .alert p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .row .col:first-child {
+    padding-top: 0;
+  }
+}

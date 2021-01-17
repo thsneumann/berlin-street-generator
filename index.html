@@ -8,79 +8,64 @@
       rel="stylesheet"
       href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css"
     />
+    <link rel="stylesheet" href="index.css" />
     <style>
       [v-cloak] {
         display: none;
       }
 
-      #app {
-        height: 100%;
-        overflow: auto;
-      }
-
-      body {
-        height: 100vh;
-        background-image: url("bg_01.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-
-      h1 {
-        margin-bottom: 2rem;
-        color: #fff;
-        line-height: 1;
-      }
-
-      a {
-        background-image: none;
-      }
-
-      p {
-        font-size: 1.125rem;
-      }
-
-      select {
-        background-color: #fff;
-      }
-
-      .card {
-        background-color: #fff;
-      }
-
-      .emoji {
+      .lds-ripple {
+        position: fixed;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         display: inline-block;
-        vertical-align: sub;
-        margin: 0 0.25rem;
-        font-size: 1.5em;
+        width: 80px;
+        height: 80px;
+        transition: opacity 0.5s;
       }
 
-      @media screen and (max-width: 767px) {
-        button.btn-large {
-          font-size: 1.75rem;
+      .lds-ripple.is-loaded {
+        opacity: 0;
+      }
+
+      .lds-ripple div {
+        position: absolute;
+        border: 4px solid #fff;
+        opacity: 1;
+        border-radius: 50%;
+        animation: lds-ripple 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+      }
+
+      .lds-ripple div:nth-child(2) {
+        animation-delay: -0.5s;
+      }
+
+      @keyframes lds-ripple {
+        0% {
+          top: 36px;
+          left: 36px;
+          width: 0;
+          height: 0;
+          opacity: 1;
         }
 
-        h1 {
-          margin-top: 1rem;
-          margin-bottom: 1rem;
-          font-size: 2.75rem;
-        }
-
-        h2 {
-          font-size: 2.25rem;
-        }
-
-        .alert p {
-          margin: 0;
-          font-size: 1rem;
-        }
-
-        .row .col:first-child {
-          padding-top: 0;
+        100% {
+          top: 0px;
+          left: 0px;
+          width: 72px;
+          height: 72px;
+          opacity: 0;
         }
       }
     </style>
   </head>
   <body>
+    <div id="loading-spinner" class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
     <div id="app" v-cloak>
       <div class="container">
         <h1>Schon wieder spazieren gehen?</h1>
