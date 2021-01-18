@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
   const App = new Vue({
     el: "#app",
     data: {
-      streets: STREETS_OF_BERLIN,
+      streets: STREETS,
       selectedStreet: null,
       selectedDistrict: "all",
     },
