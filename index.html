@@ -103,7 +103,7 @@
                   {{ selectedStreet.name }}
                 </h2>
                 <p>in {{ selectedStreet.districts.join(', ') }}</p>
-                <a :href="selectedStreet.google_maps_link" target="_blank">
+                <a :href="getMapsLink(selectedStreet.coords)" target="_blank">
                   <span class="emoji">&#127939;</span>Bring mich hin!</a
                 >
               </div>

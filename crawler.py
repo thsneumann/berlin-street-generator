@@ -4,6 +4,7 @@ and output info as json
 """
 
 import json
+import re
 import string
 import sys
 from bs4 import BeautifulSoup
@@ -32,10 +33,14 @@ for letter in string.ascii_uppercase:
             if not tr.a:
                 continue
             street["districts"].append(tr.a.string)
-        street["google_maps_link"] = soup.find("a", class_="large button-v5")["href"]
+      
+        maps_link = soup.find("a", class_="large button-v5")["href"]
+        coords = [float(x) for x in re.findall(r"\d+\.\d+", maps_link)]
+        street["coords"] = coords
+
         streets.append(street)
 
-        print(street["name"])
+        print(street["name"], street["coords"])
 
 with open(sys.argv[1], "w") as file:
-    file.write("var STREETS_OF_BERLIN = " + json.dumps(streets) + ";")
+    file.write("const STREETS = " + json.dumps(streets) + ";")
